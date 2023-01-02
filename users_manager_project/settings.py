@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Third-Party Application
     'rest_framework',
     "corsheaders",
+    'rest_framework_simplejwt',
 
     # Local Applications
     'accounts',
@@ -110,6 +111,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # User model
 AUTH_USER_MODEL = "accounts.CustomUser"
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

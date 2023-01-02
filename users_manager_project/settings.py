@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Third-Party Application
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
 
     # Local Applications
@@ -116,8 +117,13 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.AllowAny',
     ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+    
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    )
 }
 
 # Internationalization

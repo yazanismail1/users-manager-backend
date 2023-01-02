@@ -6,16 +6,7 @@ from rest_framework.views import APIView
 from .models import CustomUser
 from .serializers import UserSerializer
 from rest_framework.permissions import AllowAny
-# from rest_framework import generics
 
-
-class SignInView(APIView):
-    def post(self, request):
-        users = CustomUser.objects.all()
-        serializer = UserSerializer(data=request.data)
-        if request.data.username in users.username:
-            print("hiiiiiiiiii")
-        # return Response()
 
 class SignUpView(APIView):
     permission_classes = (AllowAny,)

@@ -37,11 +37,11 @@ class CreateView(APIView):
 class UpdateView(APIView):
     def put(self, request, pk):
         try:
-            owner = request.user.pk
+            owner = request.user.id
             user = UsersData.objects.get(pk=pk)
             updated = JSONParser().parse(request) 
             updated["owner"] = owner
-            if request.user.pk == user.owner.pk: 
+            if request.user.pk == user.owner.id: 
                 serializer = UsersDataSerializer(user, data=updated)
                 if serializer.is_valid():
                     serializer.save()
